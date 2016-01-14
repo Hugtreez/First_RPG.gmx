@@ -27,7 +27,12 @@
             <kind>1</kind>
             <string>phy_fixed_rotation = true;
 spd = 2;
+hspd = 0;
+vspd = 0;
+len = 0;
 image_speed = 0;
+scr_get_input();
+state = scr_move_state;
 </string>
           </argument>
         </arguments>
@@ -51,34 +56,32 @@ image_speed = 0;
           <argument>
             <kind>1</kind>
             <string>//movement for player
-var right_key = keyboard_check (vk_right);
-var left_key = keyboard_check (vk_left);
-var up_key = keyboard_check (vk_up);
-var down_key = keyboard_check (vk_down);
-
-if (right_key) {
-    phy_position_x += spd;
-    sprite_index = spr_player_right;
-
-}
-
-if (left_key) {
-    phy_position_x -= spd;
-    sprite_index = spr_player_left;
-
-}
-
-if (up_key) {
-    phy_position_y -= spd;
-    sprite_index = spr_player_up;
-
-}
-
-if (down_key) {
-    phy_position_y += spd;
-    sprite_index = spr_player_down;
-
-}
+script_execute(state);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//shadow
+draw_sprite(spr_player_shadow,image_index,x,y);
+draw_self();
 </string>
           </argument>
         </arguments>
